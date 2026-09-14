@@ -13,7 +13,7 @@ void points_provider_resuming();
 
 void points_provider_stopping();
 
-void points_provider_set_task(char * id);
+void points_provider_set_task(const char * id);
 
 void points_provider_init(
     int capacity, 

@@ -68,7 +68,8 @@ void app_main(void) {
         capacity, 
         batch_size,
         queue, 
-        sync
+        sync, 
+        broadcaster_publish
     );
 
     state_machine_init();

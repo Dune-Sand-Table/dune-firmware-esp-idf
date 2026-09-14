@@ -22,7 +22,8 @@ void steppers_init(
     int capacity,
     int batch_size,
     QueueHandle_t in, 
-    SemaphoreHandle_t sync
+    SemaphoreHandle_t sync,
+    void (*publish)(const char*, const char*)
 );
 
 #endif

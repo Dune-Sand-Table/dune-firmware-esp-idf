@@ -45,7 +45,6 @@ void points_provider_stopping() {
     ESP_LOGI(TAG, "points_provider_stopping");
 }
 
-void points_provider_set_task(char* id) {
-
+void points_provider_set_task(const char* id) {
     ESP_LOGI(TAG, "points_provider_set_task %s", id);
 }

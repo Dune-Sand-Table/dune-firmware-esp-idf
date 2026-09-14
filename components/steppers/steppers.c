@@ -11,8 +11,10 @@ static int queue_batch_size;
 static QueueHandle_t queue_in; 
 static SemaphoreHandle_t sync_semaphore;
 static int processed_counter;
+static void (*broadcast)(const char*, const char*);
 
 static void run_motors(polar_point_t* target) {
+
     vTaskDelay(pdMS_TO_TICKS(100)); 
 }
 
@@ -34,8 +36,10 @@ void steppers_init(
     int capacity,
     int batch_size,
     QueueHandle_t in, 
-    SemaphoreHandle_t sync
+    SemaphoreHandle_t sync,
+    void (*publish)(const char*, const char*)
 ) {
+    broadcast = publish;
     queue_capacity = capacity;
     queue_batch_size = batch_size;
     queue_in = in;
