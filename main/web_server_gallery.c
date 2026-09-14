@@ -133,7 +133,7 @@ esp_err_t web_server__gallery_activate(httpd_req_t *req) {
         return ESP_ERR_NOT_FOUND;
     } 
     points_provider_set_task(id);
-    broadcaster_publish("task", id);
+    broadcaster_publish("currentTask", id);
 
     httpd_resp_set_type(req, "application/json");
     httpd_resp_set_status(req, "200");
