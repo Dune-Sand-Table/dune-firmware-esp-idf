@@ -79,5 +79,7 @@ Desktop.ini
 .devcontainer/
 .vscode/
 .clangd
-
 www/
+
+sdkconfig
+sdkconfig.old
