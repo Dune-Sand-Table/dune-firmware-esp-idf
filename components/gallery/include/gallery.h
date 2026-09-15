@@ -43,6 +43,9 @@ bool   gallery_item_open(gallery_item_t*);
 size_t gallery_item_read(gallery_item_t*, char*, size_t);
 void   gallery_item_close(gallery_item_t*);
 
+
+void gallery_get_file_path(char* out, size_t out_size, const char* id);
+
 #endif
 
 

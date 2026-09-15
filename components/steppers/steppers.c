@@ -21,10 +21,20 @@ static void run_motors(polar_point_t* target) {
 static void steppers_task(void *pvParameters) {
     polar_point_t target;
     while (1) {
+        
         if (xQueueReceive(queue_in, &target, portMAX_DELAY) == pdTRUE) {
             run_motors(&target); 
+
             processed_counter++;
-            if (processed_counter >= queue_batch_size) {
+            if (target.end) {
+                // end of task
+                processed_counter = 0;
+                // if (broadcast) broadcast("processed", "tail batch");
+                xSemaphoreGive(sync_semaphore);  
+                continue;
+            }
+          
+            if ((processed_counter >= queue_batch_size)) {
                 processed_counter = 0; 
                 xSemaphoreGive(sync_semaphore); 
             }

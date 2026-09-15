@@ -82,10 +82,7 @@ static void fsm_state_changed(fsm_state_t state) {
     }
 }
 
-static bool has_job() {
-    return true;
-}
 
 void state_machine_init() {
-    fsm_init(fsm_state_changed, has_job);
+    fsm_init(fsm_state_changed, points_provider_has_job);
 }

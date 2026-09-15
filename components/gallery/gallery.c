@@ -9,6 +9,10 @@
 
 #define GALLERY_DIR "/gallery"
 
+void gallery_get_file_path(char* out, size_t out_size, const char* id) {
+    snprintf(out, out_size, "%s/%s.bin", GALLERY_DIR, id);
+}
+
 void gallery_init() {
     storage_ensure_directory(GALLERY_DIR);
 }

@@ -129,10 +129,12 @@ esp_err_t web_server__get_gallery_item(httpd_req_t *req) {
 esp_err_t web_server__gallery_activate(httpd_req_t *req) {
     char id[9];
     if (httpd_req_get_hdr_value_str(req, "X-Id", id, 9) != ESP_OK) {
-        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "{\"error\":\"Missing X-Id header\"}");
+        httpd_resp_send_err(req, HTTPD_400_BAD_REQUEST, "{\"error\":\"Missing or corrupted X-Id header\"}");
         return ESP_ERR_NOT_FOUND;
     } 
-    points_provider_set_task(id);
+    char path[128];
+    gallery_get_file_path(path, sizeof(path), id);
+    points_provider_set_task(path);
     broadcaster_publish("currentTask", id);
 
     httpd_resp_set_type(req, "application/json");

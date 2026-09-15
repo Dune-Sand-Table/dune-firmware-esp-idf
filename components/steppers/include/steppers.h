@@ -16,6 +16,7 @@ typedef struct {
     float angle;
     float radius;
     uint32_t speed;
+    bool end;
 } polar_point_t;
 
 void steppers_init(
